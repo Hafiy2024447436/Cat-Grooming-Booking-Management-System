@@ -1,0 +1,569 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --purple-900: #4a1d96;
+  --purple-700: #6d28d9;
+  --purple-600: #7c3aed;
+  --purple-100: #ede9fe;
+  --pink-200: #fbcfe8;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --white: #ffffff;
+  --red-600: #dc2626;
+  --red-50: #fef2f2;
+  --yellow-50: #fefce8;
+  --yellow-200: #fef08a;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(
+      160deg,
+      #f5f3ff 0%,
+      #fdf4ff 42%,
+      #eff6ff 100%
+  );
+  color: var(--gray-700);
+  min-height: 100vh;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  color: var(--red-600);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.logout-btn:hover {
+  background: var(--red-50);
+}
+
+.logout-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--red-600);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px 36px;
+}
+
+.page-heading {
+  margin-bottom: 18px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1.15;
+}
+
+.page-subtitle {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  margin-top: 4px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 18px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--gray-700);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-link:hover {
+  color: var(--gray-900);
+}
+
+.back-link svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.profile-card {
+  width: min(100%, 780px);
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  padding: 30px 32px 34px;
+}
+
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-200);
+  margin-bottom: 28px;
+}
+
+.cat-avatar,
+.cat-avatar-placeholder {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cat-avatar {
+  object-fit: cover;
+  border: 4px solid var(--purple-100);
+  display: block;
+}
+
+.cat-avatar-placeholder {
+  background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
+  border: 4px solid var(--purple-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cat-avatar-placeholder svg {
+  width: 44px;
+  height: 44px;
+  stroke: var(--purple-600);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1.2;
+}
+
+.hero-breed {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+}
+
+.owner-pill {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 14px;
+  background: var(--purple-100);
+  color: var(--purple-700);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 28px;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-field.full {
+  grid-column: 1 / -1;
+}
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-600);
+}
+
+.field-label svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--gray-500);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.field-label svg.cat-label-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.field-value {
+  padding: 14px 16px;
+  background: var(--gray-50);
+  border-radius: 10px;
+  color: var(--gray-900);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.field-value.notes {
+  background: var(--yellow-50);
+  border: 1px solid var(--yellow-200);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: #1f2937;
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 700px) {
+  .main {
+    padding: 24px 18px;
+  }
+
+  .profile-card {
+    padding: 24px 20px;
+  }
+
+  .hero-row {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .cat-avatar,
+  .cat-avatar-placeholder {
+    width: 72px;
+    height: 72px;
+  }
+
+  .hero-name {
+    font-size: 1.5rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Customer viewCat: default cat icon and remove question mark */
+.cat-default-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-default-icon svg {
+  width: 48px;
+  height: 48px;
+  color: #111827;
+}
+
+.cat-avatar-placeholder {
+  background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
+  border: 4px solid var(--purple-100);
+}
+
+.cat-avatar-placeholder .cat-default-icon svg use {
+  stroke: currentColor;
+}
+
+.fab {
+  display: none !important;
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

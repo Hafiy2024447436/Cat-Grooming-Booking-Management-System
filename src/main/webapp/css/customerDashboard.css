@@ -1,0 +1,823 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --purple-900: #4a1d96;
+  --purple-700: #6d28d9;
+  --purple-600: #7c3aed;
+  --purple-100: #ede9fe;
+  --purple-50: #faf5ff;
+
+  --blue: #3b82f6;
+  --blue-hover: #2563eb;
+  --blue-50: #eff6ff;
+
+  --green: #5cb85c;
+  --green-hover: #16a34a;
+  --green-50: #f0fdf4;
+
+  --red: #ef4444;
+  --red-hover: #dc2626;
+
+  --grey-button: #b9bfc4;
+  --grey-button-hover: #a8aeb3;
+  --disabled: #d1d5db;
+
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --white: #ffffff;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(
+      160deg,
+      #f5f3ff 0%,
+      #fdf4ff 42%,
+      #eff6ff 100%
+  );
+  color: var(--gray-900);
+  overflow-x: hidden;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 38px clamp(18px, 4vw, 54px) 48px;
+}
+
+.dashboard-page {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+.alert-error {
+  width: 100%;
+  background: #fef2f2;
+  color: var(--red-hover);
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.welcome-card {
+  background: linear-gradient(135deg, #fbfaff, #fdf2f8);
+  border: 1px solid #eadcff;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 2px 18px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.welcome-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.welcome-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--purple-100);
+  border: 3px solid var(--purple-600);
+  color: var(--purple-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.welcome-icon svg,
+.appointment-icon svg,
+.empty-icon svg,
+.stat-icon svg,
+.contact-icon svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.welcome-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.welcome-card h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--gray-900);
+}
+
+.welcome-card p {
+  margin-top: 6px;
+  color: var(--gray-500);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 98px;
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.stat-icon .cat-face-icon {
+  width: 29px;
+  height: 29px;
+  display: block;
+}
+
+.stat-icon.purple {
+  background: var(--purple-100);
+  color: var(--purple-600);
+}
+
+.stat-icon.blue {
+  background: var(--blue-50);
+  color: var(--blue);
+}
+
+.stat-icon.green {
+  background: var(--green-50);
+  color: var(--green-hover);
+}
+
+.stat-value {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--gray-900);
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-top: 6px;
+  line-height: 1.25;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 22px;
+}
+
+.panel {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.panel-head h2 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--gray-900);
+}
+
+.panel-head p {
+  color: var(--gray-500);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.panel-head a {
+  color: var(--purple-600);
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.panel-head a:hover {
+  color: var(--purple-900);
+}
+
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appointment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+}
+
+.appointment-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.appointment-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--purple-100);
+  color: var(--purple-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.appointment-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.appointment-row strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: var(--gray-900);
+}
+
+.appointment-row small {
+  display: block;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-badge {
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.status-confirmed {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-completed {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-unknown {
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+
+.empty-state {
+  padding: 38px 18px;
+  text-align: center;
+  color: var(--gray-500);
+}
+
+.empty-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  margin: 0 auto 12px;
+  background: var(--purple-100);
+  color: var(--purple-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.empty-state h3 {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--gray-700);
+  margin-bottom: 5px;
+}
+
+.empty-state p {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.info-panel {
+  overflow: hidden;
+}
+
+.brand-mini {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, #fbfaff, #fdf2f8);
+  border: 1px solid #eadcff;
+  border-radius: 15px;
+  margin-bottom: 16px;
+}
+
+.brand-mini img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--purple-100);
+  flex-shrink: 0;
+}
+
+.brand-mini strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--gray-900);
+}
+
+.brand-mini span {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--gray-500);
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 13px;
+  background: var(--gray-50);
+  color: var(--gray-700);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.contact-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: var(--purple-600);
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--purple-100);
+  color: var(--purple-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.social-row {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.social-row a {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.social-row a:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.social-row a svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+  stroke: none;
+}
+
+.social-row .s-fb {
+  background: #1877f2;
+}
+
+.social-row .s-ig {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.social-row .s-tt {
+  background: #000000;
+}
+
+.dashboard-footer {
+  margin-top: 32px;
+  padding: 16px 0 0;
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .stats-grid,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .main {
+    padding: 26px 16px 44px;
+  }
+
+  .stats-grid,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-card {
+    padding: 24px;
+  }
+
+  .welcome-left {
+    align-items: flex-start;
+  }
+
+  .welcome-card h1 {
+    font-size: 1.55rem;
+  }
+}
+
+
+/* Customer dashboard account photo */
+.customer-photo-wrap {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.customer-dashboard-photo {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 50% !important;
+  display: block;
+}
+
+.dashboard-photo-fallback {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--purple-600);
+}
+
+.dashboard-photo-fallback svg {
+  width: 34px !important;
+  height: 34px !important;
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

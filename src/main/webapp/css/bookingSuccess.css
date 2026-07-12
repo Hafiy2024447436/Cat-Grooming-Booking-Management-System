@@ -1,0 +1,219 @@
+
+*, *::before, *::after{box-sizing:border-box;margin:0;padding:0}:root{--green:#5cb85c;--green-hover:#16a34a;--green-soft:#dcfce7;--green-light:#f0fdf4;--purple:#7c3aed;--purple-dark:#5b21b6;--purple-soft:#ede9fe;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-500:#6b7280;--gray-700:#374151;--gray-900:#111827;--white:#fff;--shadow:0 4px 18px rgba(124,58,237,.08);--shadow-lg:0 12px 34px rgba(124,58,237,.14)}html,body,button,input,select,textarea{font-family:'Nunito',sans-serif!important}body{min-height:100vh;background:linear-gradient(160deg,#f5f3ff 0%,#fdf4ff 42%,#eff6ff 100%);display:flex;align-items:center;justify-content:center;padding:32px 16px;color:#1f1b2d}.page-wrap{max-width:720px;width:100%;display:flex;flex-direction:column;gap:22px}.success-header{background:#fff;border:1px solid #eee7f7;border-radius:24px;padding:34px 28px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden}.success-header:before{content:"";position:absolute;right:-70px;top:-80px;width:190px;height:190px;border-radius:999px;background:linear-gradient(135deg,#ede9fe,#fce7f3);opacity:.95}.success-header>*{position:relative;z-index:1}.check-circle{width:84px;height:84px;background:var(--green-soft);color:var(--green-hover);border-radius:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:44px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(22,163,74,.1)}.success-title{font-size:2rem;font-weight:900;color:#1f1b2d;line-height:1.15;margin-bottom:8px;letter-spacing:-.35px}.success-sub{color:#6b7280;font-size:1rem;font-weight:700}.card{background:#fff;border:1px solid #eee7f7;border-radius:22px;padding:28px;box-shadow:var(--shadow)}.card-title{font-size:1.2rem;font-weight:900;color:#1f1b2d;display:flex;align-items:center;gap:10px;margin-bottom:22px}.card-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#ede9fe,#fce7f3);color:var(--purple);display:flex;align-items:center;justify-content:center}.card-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}.info-box{background:#f9fafb;border:1px solid #eef0f4;border-radius:14px;padding:15px}.info-label{font-size:.78rem;color:#6b7280;font-weight:800;margin-bottom:7px}.info-value{font-size:.98rem;font-weight:800;color:#1f1b2d;overflow-wrap:anywhere}.cat-tags{display:flex;flex-wrap:wrap;gap:8px}.cat-tag{padding:6px 14px;background:var(--purple-soft);color:var(--purple-dark);border-radius:999px;font-size:.86rem;font-weight:800}.service-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--gray-100)}.service-row:last-child{border-bottom:none}.service-left{display:flex;align-items:center;gap:12px}.service-num{width:32px;height:32px;background:var(--purple-soft);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;color:var(--purple-dark);flex-shrink:0}.service-name{font-size:.94rem;font-weight:700;color:#1f1b2d}.service-id{font-size:.78rem;color:#6b7280;margin-top:2px}.total-box{margin-top:18px;padding:17px 18px;background:linear-gradient(135deg,#faf5ff,#fff7fb);border:1px solid #ddd6fe;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:12px}.total-label{font-size:1rem;font-weight:800;color:#1f1b2d}.total-amount{font-size:1.55rem;font-weight:900;color:var(--purple)}.btn-close-wrap{display:flex;justify-content:center}.btn-close{min-width:170px;text-align:center;background:#b9bfc4;color:#fff;text-decoration:none;border-radius:12px;padding:12px 24px;font-weight:900;box-shadow:0 6px 18px rgba(0,0,0,.08);transition:background .18s,transform .18s}.btn-close:hover{background:#a8aeb3;transform:translateY(-1px)}@media(max-width:640px){body{padding:22px 14px}.success-header,.card{padding:22px}.grid-2{grid-template-columns:1fr}.total-box{flex-direction:column;align-items:flex-start}.success-title{font-size:1.7rem}}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

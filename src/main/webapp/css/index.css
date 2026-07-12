@@ -1,0 +1,344 @@
+/* ══════════════════════════════
+   INDEX.CSS
+   Used by: index.html only
+   Load order: base.css, then index.css
+══════════════════════════════ */
+
+/* index.html <main id="home"> overrides the shared `main` rule
+   from base.css */
+main#home {
+  position: relative;
+  padding: 0 0 160px 0;
+}
+
+/* .main-inner inside #home = index hero (full-width grid).
+   This overrides the shared .main-inner from base.css. */
+main#home .main-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  min-height: 520px;
+}
+
+/* Hero text */
+.hero-text {
+  color: var(--white);
+  padding-top: 1rem;
+}
+
+.hero-text h2 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.hero-text h2 .paw-icon {
+  display: inline-block;
+  width: 2.8rem;
+  height: 2.8rem;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  object-fit: contain;
+}
+
+.hero-text p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75;
+  max-width: 30rem;
+}
+
+.hero-image-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+  padding-top: 4rem;
+}
+
+.curve-svg {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  max-width: 580px;
+  height: auto;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.cat-img {
+  display: block;
+  width: 85%;
+  max-width: 420px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: -80px;
+}
+
+.wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Index-specific responsive collapse */
+@media (max-width: 900px) {
+  main#home .main-inner {
+    grid-template-columns: 1fr;
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  .hero-image-wrap { order: -1; }
+
+  .cat-img {
+    margin-bottom: 0;
+    max-width: 280px;
+  }
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

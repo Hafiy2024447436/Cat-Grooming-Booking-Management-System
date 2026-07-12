@@ -1,0 +1,137 @@
+-- Non-destructive PostgreSQL bootstrap for cloud deployment.
+-- This script only creates missing objects. It never drops application data.
+
+CREATE SEQUENCE IF NOT EXISTS staffid_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE IF NOT EXISTS custid_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE IF NOT EXISTS breedid_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE IF NOT EXISTS catid_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE IF NOT EXISTS serviceid_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE IF NOT EXISTS appointmentid_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE IF NOT EXISTS staff (
+    staffid             INTEGER PRIMARY KEY DEFAULT nextval('staffid_seq'),
+    staffusername       VARCHAR(100) NOT NULL,
+    staffpassword       VARCHAR(255) NOT NULL,
+    stafffullname       VARCHAR(150) NOT NULL,
+    staffphonenumber    VARCHAR(30),
+    staffemail          VARCHAR(255) NOT NULL,
+    staffaddress        VARCHAR(500),
+    staffrole           VARCHAR(20) NOT NULL DEFAULT 'Staff',
+    staffprofilephoto   BYTEA,
+    ownerid             INTEGER,
+    staffstatus         VARCHAR(20) NOT NULL DEFAULT 'Active',
+    CONSTRAINT staff_owner_fk FOREIGN KEY (ownerid) REFERENCES staff(staffid)
+        ON UPDATE CASCADE ON DELETE SET NULL,
+    CONSTRAINT staff_role_ck CHECK (UPPER(staffrole) IN ('STAFF', 'OWNER')),
+    CONSTRAINT staff_status_ck CHECK (UPPER(staffstatus) IN ('ACTIVE', 'INACTIVE'))
+);
+
+ALTER SEQUENCE staffid_seq OWNED BY staff.staffid;
+CREATE UNIQUE INDEX IF NOT EXISTS staff_username_uk ON staff (LOWER(TRIM(staffusername)));
+CREATE UNIQUE INDEX IF NOT EXISTS staff_email_uk ON staff (LOWER(TRIM(staffemail)));
+CREATE INDEX IF NOT EXISTS staff_owner_ix ON staff(ownerid);
+CREATE INDEX IF NOT EXISTS staff_status_ix ON staff(staffstatus);
+
+CREATE TABLE IF NOT EXISTS customer (
+    custid              INTEGER PRIMARY KEY DEFAULT nextval('custid_seq'),
+    custusername        VARCHAR(100) NOT NULL,
+    custpassword        VARCHAR(255) NOT NULL,
+    custfullname        VARCHAR(150) NOT NULL,
+    custphonenumber     VARCHAR(30),
+    custemail           VARCHAR(255) NOT NULL,
+    custprofilephoto    BYTEA,
+    custstatus          VARCHAR(20) NOT NULL DEFAULT 'Active',
+    CONSTRAINT customer_status_ck CHECK (UPPER(custstatus) IN ('ACTIVE', 'INACTIVE'))
+);
+
+ALTER SEQUENCE custid_seq OWNED BY customer.custid;
+CREATE UNIQUE INDEX IF NOT EXISTS customer_username_uk ON customer (LOWER(TRIM(custusername)));
+CREATE UNIQUE INDEX IF NOT EXISTS customer_email_uk ON customer (LOWER(TRIM(custemail)));
+CREATE INDEX IF NOT EXISTS customer_status_ix ON customer(custstatus);
+
+CREATE TABLE IF NOT EXISTS breed (
+    breedid             INTEGER PRIMARY KEY DEFAULT nextval('breedid_seq'),
+    breedname           VARCHAR(120) NOT NULL UNIQUE
+);
+
+ALTER SEQUENCE breedid_seq OWNED BY breed.breedid;
+
+CREATE TABLE IF NOT EXISTS cat (
+    catid               INTEGER PRIMARY KEY DEFAULT nextval('catid_seq'),
+    catname             VARCHAR(120) NOT NULL,
+    dateofbirth         DATE,
+    gender              VARCHAR(20),
+    conditionnotes      TEXT,
+    catphoto            BYTEA,
+    custid              INTEGER NOT NULL,
+    breedid             INTEGER NOT NULL,
+    catstatus           VARCHAR(20) NOT NULL DEFAULT 'Active',
+    CONSTRAINT cat_customer_fk FOREIGN KEY (custid) REFERENCES customer(custid)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    CONSTRAINT cat_breed_fk FOREIGN KEY (breedid) REFERENCES breed(breedid)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    CONSTRAINT cat_status_ck CHECK (UPPER(catstatus) IN ('ACTIVE', 'INACTIVE'))
+);
+
+ALTER SEQUENCE catid_seq OWNED BY cat.catid;
+CREATE INDEX IF NOT EXISTS cat_customer_ix ON cat(custid);
+CREATE INDEX IF NOT EXISTS cat_breed_ix ON cat(breedid);
+CREATE INDEX IF NOT EXISTS cat_status_ix ON cat(catstatus);
+
+CREATE TABLE IF NOT EXISTS service (
+    serviceid           INTEGER PRIMARY KEY DEFAULT nextval('serviceid_seq'),
+    servicename         VARCHAR(150) NOT NULL,
+    category            VARCHAR(20) NOT NULL DEFAULT 'ADDON',
+    description         TEXT,
+    price               NUMERIC(10,2) NOT NULL DEFAULT 0,
+    CONSTRAINT service_category_ck CHECK (UPPER(REPLACE(category, '-', '')) IN ('MAIN', 'ADDON')),
+    CONSTRAINT service_price_ck CHECK (price >= 0)
+);
+
+ALTER SEQUENCE serviceid_seq OWNED BY service.serviceid;
+CREATE INDEX IF NOT EXISTS service_category_ix ON service(category);
+
+CREATE TABLE IF NOT EXISTS furbasedservice (
+    serviceid           INTEGER PRIMARY KEY,
+    furtype             VARCHAR(30) NOT NULL,
+    CONSTRAINT fur_service_fk FOREIGN KEY (serviceid) REFERENCES service(serviceid)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS weightbasedservice (
+    serviceid           INTEGER PRIMARY KEY,
+    weightrange         VARCHAR(80) NOT NULL,
+    CONSTRAINT weight_service_fk FOREIGN KEY (serviceid) REFERENCES service(serviceid)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS appointment (
+    appointmentid       INTEGER NOT NULL DEFAULT nextval('appointmentid_seq'),
+    catid               INTEGER NOT NULL,
+    serviceid           INTEGER NOT NULL,
+    appointmentdate     DATE NOT NULL,
+    appointmenttime     TIME NOT NULL,
+    appointmentstatus   VARCHAR(30) NOT NULL DEFAULT 'Pending',
+    weight              NUMERIC(8,2),
+    totalamount         NUMERIC(10,2) NOT NULL DEFAULT 0,
+    staffid             INTEGER,
+    recordstatus        VARCHAR(20) NOT NULL DEFAULT 'Active',
+    CONSTRAINT appointment_pk PRIMARY KEY (appointmentid, serviceid),
+    CONSTRAINT appointment_cat_fk FOREIGN KEY (catid) REFERENCES cat(catid)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    CONSTRAINT appointment_service_fk FOREIGN KEY (serviceid) REFERENCES service(serviceid)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    CONSTRAINT appointment_staff_fk FOREIGN KEY (staffid) REFERENCES staff(staffid)
+        ON UPDATE CASCADE ON DELETE SET NULL,
+    CONSTRAINT appointment_status_ck CHECK (UPPER(appointmentstatus) IN ('PENDING', 'CONFIRMED', 'COMPLETED', 'CANCELLED')),
+    CONSTRAINT appointment_record_status_ck CHECK (UPPER(recordstatus) IN ('ACTIVE', 'INACTIVE')),
+    CONSTRAINT appointment_weight_ck CHECK (weight IS NULL OR weight > 0),
+    CONSTRAINT appointment_total_ck CHECK (totalamount >= 0)
+);
+
+ALTER SEQUENCE appointmentid_seq OWNED BY appointment.appointmentid;
+CREATE INDEX IF NOT EXISTS appointment_cat_ix ON appointment(catid);
+CREATE INDEX IF NOT EXISTS appointment_service_ix ON appointment(serviceid);
+CREATE INDEX IF NOT EXISTS appointment_staff_ix ON appointment(staffid);
+CREATE INDEX IF NOT EXISTS appointment_date_time_ix ON appointment(appointmentdate, appointmenttime);
+CREATE INDEX IF NOT EXISTS appointment_status_ix ON appointment(appointmentstatus, recordstatus);

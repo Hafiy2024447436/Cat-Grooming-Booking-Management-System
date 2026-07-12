@@ -1,0 +1,516 @@
+/* ══════════════════════════════
+   REGISTER.CSS
+   Used by: register.jsp
+   Load order: base.css, then register.css
+══════════════════════════════ */
+
+.register-page-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  background: var(--pink-accent);
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+}
+
+.logo svg {
+  width: 45px;
+  height: 45px;
+  stroke: var(--purple-dark);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.register-header h1 {
+  color: var(--white);
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.register-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.register-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #333333;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  stroke: #888888;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.input-wrap input:focus {
+  border-color: var(--pink-accent);
+  box-shadow: 0 0 0 3px rgba(249, 168, 212, 0.28);
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-register {
+  background: var(--purple-dark);
+  color: var(--white);
+}
+
+.btn-register:hover {
+  background: #5b21b6;
+}
+
+.btn-cancel {
+  background: #ef4444;
+  color: var(--white);
+}
+
+.btn-cancel:hover {
+  background: #dc2626;
+}
+
+.login-link {
+  margin-top: 25px;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #555555;
+  font-weight: 600;
+}
+
+.login-link a {
+  color: #6d28d9;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .register-page-main {
+    padding: 2rem 1rem;
+  }
+
+  .register-card {
+    padding: 24px;
+  }
+
+  .btn-row {
+    flex-direction: column;
+  }
+}
+
+/* FINAL REGISTER BUTTON FIX */
+.register-card .register-button-row,
+.register-card .btn-row {
+  display: flex !important;
+  gap: 18px !important;
+  margin-top: 10px !important;
+}
+
+.register-card .register-button-row .btn,
+.register-card .btn-row .btn {
+  flex: 1 !important;
+  min-height: 56px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-family: var(--font-main, 'Nunito', sans-serif) !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+}
+
+.register-card .register-button-row .btn-cancel,
+.register-card .btn-row .btn-cancel {
+  order: 1 !important;
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.register-card .register-button-row .btn-cancel:hover,
+.register-card .btn-row .btn-cancel:hover {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.register-card .register-button-row .btn-register,
+.register-card .btn-row .btn-register {
+  order: 2 !important;
+  background: #5cb85c !important;
+  border-color: #5cb85c !important;
+  color: #ffffff !important;
+}
+
+.register-card .register-button-row .btn-register:hover,
+.register-card .btn-row .btn-register:hover {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+}
+
+/* Global font alignment */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ===== DISABLED BUTTON ALIGNMENT ===== */
+button:disabled,
+.btn:disabled,
+.btn-save:disabled,
+.btn-register:disabled,
+.btn-submit:disabled,
+.btn-reset-submit:disabled,
+.save-btn:disabled {
+  background: #d1d5db !important;
+  border-color: #d1d5db !important;
+  color: #ffffff !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+button:disabled:hover,
+.btn:disabled:hover,
+.btn-save:disabled:hover,
+.btn-register:disabled:hover,
+.btn-submit:disabled:hover,
+.btn-reset-submit:disabled:hover,
+.save-btn:disabled:hover {
+  background: #d1d5db !important;
+  border-color: #d1d5db !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ===== FINAL REGISTER HEADER WHITE TEXT FIX ===== */
+html body .register-page-main .register-header h1 {
+  color: #ffffff !important;
+}
+
+html body .register-page-main .register-header p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1 !important;
+}

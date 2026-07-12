@@ -1,0 +1,616 @@
+@charset "UTF-8";
+
+/* ══════════════════════════════
+   BASE.CSS
+   Shared by: index.html, aboutUs.html, contact.html
+══════════════════════════════ */
+
+/* ── RESET & ROOT ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --purple-bg:    #6B5B6F;
+  --pink-footer:  #F0B8DC;
+  --pink-accent:  #f9a8d4;
+  --purple-dark:  #3b0764;
+  --white:        #ffffff;
+  --font-main:    'Nunito', sans-serif;
+  --font-display: 'Nunito', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--purple-bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ══════════════════════════════
+   HEADER (index, aboutUs, contact)
+══════════════════════════════ */
+header {
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #6B5B6F;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.brand-text h1 {
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.brand-text p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Navigation — .nav-link (index) and .nav-btn (aboutUs/contact) */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link,
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-btn:hover {
+  color: var(--pink-accent);
+}
+
+.nav-link.active,
+.nav-btn.active {
+  color: var(--pink-accent);
+}
+
+.nav-link svg,
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-login {
+  padding: 0.5rem 1.8rem;
+  background: var(--pink-accent);
+  color: var(--purple-dark);
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.btn-login:hover {
+  background: #e879a0;
+  color: var(--white);
+}
+
+/* ══════════════════════════════
+   MAIN — shared default (aboutUs/contact use this as-is;
+   index overrides it with main#home in index.css)
+══════════════════════════════ */
+main {
+  flex: 1;
+  padding: 3rem 2rem;
+}
+
+.main-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* .page-title — shared heading block used by aboutUs.html
+   and contact.html (identical markup/intent on both pages) */
+.page-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title h2 {
+  color: var(--white);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  margin-bottom: .75rem;
+}
+
+.page-title p {
+  color: rgba(255,255,255,.88);
+  font-size: 1.05rem;
+  font-weight: 600;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ══════════════════════════════
+   FOOTER (index, aboutUs, contact)
+══════════════════════════════ */
+footer {
+  background: var(--pink-footer);
+  padding: 2.5rem 3rem 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-inner h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--purple-dark);
+  margin-bottom: 1.4rem;
+  margin-top: -0.5rem;
+}
+
+.footer-social h3 {
+  padding-left: 2rem;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--purple-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.contact-list li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--purple-dark);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-brand {
+  text-align: center;
+}
+
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+}
+
+.footer-brand-row img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.footer-brand-row span {
+  font-family: var(--font-main);
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--purple-dark);
+}
+
+.footer-brand p {
+  color: var(--purple-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.7;
+  max-width: 20rem;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+.footer-copy {
+  color: rgba(59, 7, 100, 0.55);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  white-space: nowrap;
+}
+
+.footer-social {
+  position: relative;
+  padding-left: 5rem;
+}
+
+/* social icons — .social-icons (index) and .social-row (aboutUs/contact) */
+.social-icons,
+.social-row {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.social-icons a,
+.social-row a {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.social-icons a:hover,
+.social-row a:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.social-icons a svg,
+.social-row a svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+/* social colours — .social-fb (index) and .s-fb (aboutUs/contact) */
+.social-fb, .s-fb { background: #1877f2; }
+.social-ig, .s-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.social-tt, .s-tt { background: #000000; }
+
+.paw-deco {
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.paw-deco span {
+  font-size: 3rem;
+  opacity: 0.18;
+  color: var(--purple-dark);
+  display: block;
+}
+
+.paw-deco span:nth-child(1) { transform: rotate(10deg); }
+.paw-deco span:nth-child(2) { transform: rotate(-15deg) translateX(0.5rem); }
+.paw-deco span:nth-child(3) { transform: rotate(-40deg); }
+
+/* ══════════════════════════════
+   SHARED RESPONSIVE
+   (page-specific responsive rules live in each page's
+   own CSS file — e.g. main#home grid collapse is in index.css)
+══════════════════════════════ */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  header { padding: 1rem 1.5rem; }
+  nav { gap: 1rem; }
+}
+
+@media (max-width: 700px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Extra shared helpers for auth pages */
+.footer-mail-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn-login.btn-login-active {
+  background: var(--pink-accent);
+  color: var(--purple-dark);
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

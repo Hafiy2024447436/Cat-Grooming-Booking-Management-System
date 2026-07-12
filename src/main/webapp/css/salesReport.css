@@ -1,0 +1,515 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Nunito', sans-serif;
+	background: linear-gradient(
+	    160deg,
+	    #f5f3ff 0%,
+	    #fdf4ff 42%,
+	    #eff6ff 100%
+	);
+	min-height: 100vh;
+	padding: 42px 14px 50px;
+	color: #020617;
+}
+
+.container {
+	max-width: 1160px;
+	margin: 0 auto;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.icon {
+	width: 56px;
+	height: 56px;
+	background: #fef9c3;
+	border-radius: 14px;
+	color: #ca8a04;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.header h1 {
+	font-size: 24px;
+	font-weight: 900;
+}
+
+.header p {
+	color: #64748b;
+	font-size: 14px;
+	margin-top: 3px;
+}
+
+.card {
+	background: white;
+	border-radius: 10px;
+	padding: 24px;
+	box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+}
+
+.filter-title,
+.table-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 17px;
+	font-weight: 900;
+	margin-bottom: 20px;
+}
+
+.filter-icon {
+	color: #7c3aed;
+	font-size: 18px;
+}
+
+.table-icon {
+	color: #16a34a;
+	font-size: 18px;
+}
+
+.period-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.period-option {
+	border: 1px solid #d1d5db;
+	border-radius: 7px;
+	height: 86px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	cursor: pointer;
+	background: white;
+	color: #0f172a;
+}
+
+.period-option.active {
+	border-color: #9333ea;
+	background: #fbf5ff;
+	color: #7c3aed;
+	box-shadow: 0 2px 8px rgba(147, 51, 234, .25);
+}
+
+.period-option span:first-child {
+	font-size: 24px;
+	line-height: 1;
+}
+
+.period-option span:last-child {
+	font-size: 14px;
+}
+
+.form-panel {
+	background: #fbf5ff;
+	border: 1px solid #d8b4fe;
+	border-radius: 7px;
+	padding: 26px;
+	margin-bottom: 48px;
+}
+
+.form-title {
+	color: #581c87;
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 18px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.field label {
+	font-size: 13px;
+	color: #334155;
+}
+
+.field input,
+.field select {
+	height: 38px;
+	border: 1px solid #cbd5e1;
+	border-radius: 6px;
+	padding: 0 12px;
+	font-family: inherit;
+	font-size: 14px;
+	background: white;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 16px;
+}
+
+.btn {
+	border: none;
+	border-radius: 7px;
+	height: 48px;
+	padding: 0 34px;
+	font-family: inherit;
+	font-weight: 800;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.btn-green {
+	background: #16c47f;
+	color: white;
+}
+
+.btn-white {
+	background: white;
+	border: 1px solid #cbd5e1;
+	color: #020617;
+}
+
+.report-card {
+	margin-top: 18px;
+}
+
+.table-wrap {
+	overflow-x: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 760px;
+}
+
+th {
+	text-align: left;
+	font-size: 14px;
+	font-weight: 900;
+	color: #1e293b;
+	padding: 12px 16px;
+	border-bottom: 1px solid #cbd5e1;
+}
+
+td {
+	padding: 13px 16px;
+	border-bottom: 1px solid #e5e7eb;
+	font-size: 14px;
+}
+
+tr.total-row td {
+	background: #f8fafc;
+	font-weight: 900;
+}
+
+.empty {
+	text-align: center;
+	padding: 42px 12px;
+	color: #64748b;
+	font-weight: 700;
+}
+
+@media (max-width: 760px) {
+	.period-grid,
+	.form-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.actions {
+		flex-direction: column;
+	}
+
+	.btn {
+		width: 100%;
+	}
+}
+
+/* Button color alignment */
+:root {
+	--btn-green: #5cb85c;
+	--btn-green-hover: #16a34a;
+	--btn-grey: #b9bfc4;
+	--btn-grey-hover: #a8aeb3;
+	--btn-disabled: #d1d5db;
+}
+
+.btn-green,
+button.btn-green {
+	background: var(--btn-green) !important;
+	color: #ffffff !important;
+	border-color: var(--btn-green) !important;
+}
+
+.btn-green:hover,
+button.btn-green:hover {
+	background: var(--btn-green-hover) !important;
+	border-color: var(--btn-green-hover) !important;
+}
+
+.btn-white,
+button.btn-white {
+	background: var(--btn-grey) !important;
+	color: #ffffff !important;
+	border-color: var(--btn-grey) !important;
+}
+
+.btn-white:hover,
+button.btn-white:hover {
+	background: var(--btn-grey-hover) !important;
+	border-color: var(--btn-grey-hover) !important;
+}
+
+button:disabled,
+.btn:disabled {
+	background: var(--btn-disabled) !important;
+	color: #6b7280 !important;
+	cursor: not-allowed !important;
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+	font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+	font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+	font-size: 2rem !important;
+	font-weight: 800 !important;
+	line-height: 1.2 !important;
+	letter-spacing: -0.25px !important;
+	color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+	font-size: 1rem !important;
+	font-weight: 600 !important;
+	line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+	font-size: 1.5rem !important;
+	font-weight: 800 !important;
+	line-height: 1.25 !important;
+	letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+	font-size: 1.125rem !important;
+	font-weight: 700 !important;
+	line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+	font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+	font-size: 16px !important;
+	font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+	font-size: 1.875rem !important;
+	font-weight: 800 !important;
+	line-height: 1.22 !important;
+	letter-spacing: -0.2px !important;
+	color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+	font-size: 1rem !important;
+	font-weight: 600 !important;
+	line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+	font-size: 1.5rem !important;
+	font-weight: 800 !important;
+	line-height: 1.25 !important;
+	letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+	font-size: 1.125rem !important;
+	font-weight: 700 !important;
+	line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+	font-size: 1rem;
+	font-weight: 600;
+}
