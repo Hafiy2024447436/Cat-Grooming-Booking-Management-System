@@ -1,0 +1,744 @@
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:root {
+  --purple-900: #4a1d96;
+  --purple-700: #6d28d9;
+  --purple-600: #7c3aed;
+  --purple-100: #ede9fe;
+  --pink-200:   #fbcfe8;
+  --pink-100:   #fdf2f8;
+  --gray-50:    #f9fafb;
+  --gray-100:   #f3f4f6;
+  --gray-200:   #e5e7eb;
+  --gray-300:   #d1d5db;
+  --gray-400:   #9ca3af;
+  --gray-500:   #6b7280;
+  --gray-600:   #4b5563;
+  --gray-700:   #374151;
+  --gray-900:   #111827;
+  --white:      #ffffff;
+  --red-600:    #dc2626;
+  --red-50:     #fef2f2;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(
+      160deg,
+      #f5f3ff 0%,
+      #fdf4ff 42%,
+      #eff6ff 100%
+  );
+  color: var(--gray-700);
+  min-height: 100vh;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  color: var(--red-600);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.logout-btn:hover { 
+  background: var(--red-50); 
+}
+
+.logout-btn svg { 
+  width: 20px; 
+  height: 20px; 
+  stroke: var(--red-600); 
+  fill: none; 
+}
+
+/* ── MAIN CONTENT ────────────────────────────── */
+.main {
+  padding: 32px 36px 64px;
+  min-height: 100vh;
+}
+
+/* Page header */
+.page-header {
+  width: min(100%, 980px);
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1.15;
+}
+
+.page-subtitle {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* Register card */
+.register-card {
+  width: min(100%, 980px);
+  margin: 0 auto 24px;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px 36px;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 38px;
+}
+
+.register-card-head {
+  flex: 0 0 360px;
+  max-width: 360px;
+}
+
+.register-card-head h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1.2;
+}
+
+.register-card-head p {
+  color: var(--gray-500);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.breed-select {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 48px;
+  padding: 0 42px 0 18px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-color: #7a5c80;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  box-shadow: 0 8px 18px rgba(122, 92, 128, 0.18);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.breed-select:hover {
+  background-color: #684d70;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(122, 92, 128, 0.22);
+}
+
+.breed-select option {
+  color: var(--gray-900);
+  background: var(--white);
+  font-weight: 700;
+}
+
+/* Cat table card */
+.table-card {
+  width: min(100%, 980px);
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 18px;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
+  overflow: hidden;
+}
+
+.table-card-head {
+  padding: 22px 28px 18px;
+  border-bottom: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-card-head h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gray-900);
+}
+
+.table-card-head p {
+  color: var(--gray-500);
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+table,
+.cat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cat-table {
+  table-layout: auto;
+}
+
+thead tr {
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+th {
+  padding: 16px 24px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--gray-600);
+  text-align: left;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+td {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: middle;
+}
+
+tr:last-child td { 
+  border-bottom: none; 
+}
+
+tbody tr { 
+  transition: background 0.15s ease; 
+}
+
+tbody tr:hover { 
+  background: #fbfaff; 
+}
+
+/* Table column width */
+.photo-col {
+  width: 120px;
+  white-space: nowrap;
+}
+
+.details-col {
+  width: 300px;
+}
+
+.owner-col {
+  width: 260px;
+}
+
+.action-col {
+  width: 130px;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.cat-table th:nth-child(2),
+.cat-table td:nth-child(2),
+.cat-table th:nth-child(3),
+.cat-table td:nth-child(3) {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Cat photo */
+.cat-photo-frame,
+.cat-avatar,
+.cat-avatar-placeholder {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+.cat-photo-frame {
+  background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
+  border: 3px solid var(--purple-100);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-avatar {
+  object-fit: cover;
+  display: block;
+}
+
+.cat-avatar-placeholder {
+  align-items: center;
+  justify-content: center;
+  color: var(--purple-600);
+}
+
+.cat-avatar-placeholder svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Cat details */
+.cat-name {
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--gray-900);
+}
+
+.cat-breed {
+  font-size: 0.84rem;
+  color: var(--gray-600);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.cat-age {
+  font-size: 0.86rem;
+  color: var(--gray-700);
+  margin-top: 2px;
+  font-weight: 700;
+}
+
+/* Owner */
+.owner-name {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: var(--purple-100);
+  color: var(--purple-700);
+  font-size: 0.88rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Action buttons */
+.action-btns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.action-btn svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+}
+
+.action-btn.view { 
+  color: #2563eb; 
+}
+
+.action-btn.view:hover { 
+  background: #eff6ff; 
+  transform: translateY(-1px); 
+}
+
+.action-btn.view svg { 
+  stroke: #2563eb; 
+}
+
+.action-btn.edit { 
+  color: #7c3aed; 
+}
+
+.action-btn.edit:hover { 
+  background: var(--purple-100); 
+  transform: translateY(-1px); 
+}
+
+.action-btn.edit svg { 
+  stroke: #7c3aed; 
+}
+
+/* Empty state */
+.empty-state {
+  padding: 42px 20px;
+  text-align: center;
+  color: var(--gray-500);
+}
+
+.empty-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.empty-state h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--gray-700);
+  margin-bottom: 4px;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Help fab removed */
+.fab-help { 
+  display: none; 
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .main { 
+    padding: 24px 18px 50px; 
+  }
+
+  .page-header,
+  .register-card,
+  .table-card {
+    width: 100%;
+  }
+
+  .register-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 28px;
+  }
+
+  .register-card-head {
+    flex: none;
+    max-width: none;
+    width: 100%;
+  }
+
+  .breed-select {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .table-card {
+    overflow-x: auto;
+  }
+
+  .cat-table {
+    min-width: 680px;
+  }
+}
+
+/* Table alignment polish: Action center, owner center, details closer */
+.cat-table {
+  table-layout: fixed;
+}
+
+.cat-table th:nth-child(2),
+.cat-table td:nth-child(2) {
+  width: 34%;
+  padding-left: 18px;
+  padding-right: 10px;
+}
+
+.cat-table th:nth-child(3),
+.cat-table td:nth-child(3) {
+  width: 230px;
+  text-align: center;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.cat-table th:nth-child(4),
+.cat-table td:nth-child(4),
+.action-col {
+  width: 130px;
+  text-align: center !important;
+  padding-left: 8px !important;
+  padding-right: 20px !important;
+}
+
+.owner-name {
+  justify-content: center;
+  text-align: center;
+}
+
+.action-btns {
+  justify-content: center !important;
+}
+
+
+.details-col {
+  width: 34% !important;
+}
+
+.owner-col {
+  width: 230px !important;
+  text-align: center !important;
+}
+
+.photo-col {
+  width: 120px;
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

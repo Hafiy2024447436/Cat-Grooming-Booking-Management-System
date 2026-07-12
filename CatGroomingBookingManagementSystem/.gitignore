@@ -1,0 +1,14 @@
+# Maven / Eclipse build output
+target/
+build/
+*.class
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# IDE / OS noise
+.DS_Store
+Thumbs.db
+.metadata/

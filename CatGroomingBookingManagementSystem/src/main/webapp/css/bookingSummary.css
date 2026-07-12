@@ -1,0 +1,641 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Nunito', sans-serif;
+	background: linear-gradient(
+	    160deg,
+	    #f5f3ff 0%,
+	    #fdf4ff 42%,
+	    #eff6ff 100%
+	);
+	min-height: 100vh;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 2rem 1rem;
+}
+
+.container {
+	width: 100%;
+	max-width: 720px;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.page-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.header-icon {
+	width: 56px;
+	height: 56px;
+	background: #5cb85c;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: white;
+	font-size: 24px;
+	font-weight: 900;
+}
+
+.page-header h2 {
+	font-size: 1.6rem;
+	font-weight: 900;
+	color: #111827;
+	line-height: 1.2;
+}
+
+.page-header p {
+	color: #6b7280;
+	font-size: 0.9rem;
+	margin-top: 0.2rem;
+	font-weight: 600;
+}
+
+.card {
+	background: #fff;
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card.purple-grad {
+	background: linear-gradient(135deg, #faf5ff, #fdf2f8);
+	border: 2px solid #d8b4fe;
+}
+
+.card-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1.05rem;
+	font-weight: 800;
+	color: #111827;
+	margin-bottom: 1rem;
+}
+
+.card-icon {
+	width: 22px;
+	height: 22px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #7c3aed;
+	color: white;
+	font-size: 13px;
+	font-weight: 900;
+}
+
+
+.card-icon svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.dt-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.dt-box {
+	background: #fff;
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+.dt-label {
+	font-size: 0.8rem;
+	color: #6b7280;
+	font-weight: 600;
+	margin-bottom: 0.35rem;
+}
+
+.dt-value {
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: #111827;
+}
+
+.cat-box {
+	background: #fff;
+	border-radius: 10px;
+	padding: 1rem;
+	margin-top: 1rem;
+}
+
+.cat-tag {
+	display: inline-flex;
+	padding: 6px 14px;
+	background: #ede9fe;
+	color: #6d28d9;
+	border-radius: 999px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.error-box {
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	color: #b91c1c;
+	border-radius: 10px;
+	padding: 12px 14px;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.service-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	background: #f9fafb;
+	border-radius: 10px;
+	margin-bottom: 0.75rem;
+}
+
+.service-left {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.service-num {
+	width: 40px;
+	height: 40px;
+	background: #f3e8ff;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.88rem;
+	font-weight: 800;
+	color: #7c3aed;
+	flex-shrink: 0;
+}
+
+.service-name {
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: #111827;
+}
+
+.service-id {
+	font-size: 0.75rem;
+	color: #6b7280;
+	margin-top: 0.1rem;
+	font-weight: 600;
+}
+
+.service-price {
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: #374151;
+}
+
+.total-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+	border: 2px solid #86efac;
+	border-radius: 10px;
+	margin-top: 1rem;
+}
+
+.total-label {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: #14532d;
+}
+
+.total-amount {
+	font-size: 1.5rem;
+	font-weight: 900;
+	color: #16a34a;
+}
+
+.notice-card {
+	background: #eff6ff;
+	border: 1px solid #bfdbfe;
+	border-radius: 12px;
+	padding: 1rem;
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+}
+
+.notice-icon {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #2563eb;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	font-weight: 900;
+	flex-shrink: 0;
+}
+
+.notice-text {
+	font-size: 0.88rem;
+	color: #1e3a8a;
+	font-weight: 600;
+	line-height: 1.6;
+}
+
+.notice-text strong {
+	font-weight: 800;
+}
+
+.action-row {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+}
+
+.btn {
+	padding: 0.75rem 1.75rem;
+	border: none;
+	border-radius: 10px;
+	font-family: 'Nunito', sans-serif;
+	font-size: 0.95rem;
+	font-weight: 800;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.btn-outline {
+	background: #fff;
+	color: #374151;
+	border: 2px solid #d1d5db;
+}
+
+.btn-outline:hover {
+	background: #f9fafb;
+	border-color: #9ca3af;
+}
+
+.btn-confirm {
+	background: #5cb85c;
+	color: #fff;
+	box-shadow: 0 2px 8px rgba(34, 197, 94, 0.25);
+}
+
+.btn-confirm:hover {
+	box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+	transform: translateY(-1px);
+}
+
+@media ( max-width : 520px) {
+	.dt-grid {
+		grid-template-columns: 1fr;
+	}
+	.action-row {
+		flex-direction: column;
+	}
+	.btn {
+		text-align: center;
+	}
+}
+
+/* ===== FINAL COLOR STANDARD ===== */
+:root {
+  --ui-green: #5cb85c;
+  --ui-green-hover: #16a34a;
+  --ui-red: #ef4444;
+  --ui-red-hover: #dc2626;
+  --ui-grey: #b9bfc4;
+  --ui-grey-hover: #a8aeb3;
+  --ui-disabled: #d1d5db;
+  --ui-disabled-text: #6b7280;
+}
+
+.btn-save,
+.btn-register,
+.btn-continue,
+.btn-proceed,
+.btn-confirm,
+.popup-submit.confirm {
+  background: var(--ui-green) !important;
+  color: #ffffff !important;
+}
+
+.btn-save:hover:not(:disabled),
+.btn-register:hover:not(:disabled),
+.btn-continue:hover:not(:disabled),
+.btn-proceed:hover:not(:disabled),
+.btn-confirm:hover:not(:disabled),
+.popup-submit.confirm:hover:not(:disabled) {
+  background: var(--ui-green-hover) !important;
+}
+
+.btn-cancel,
+.btn-delete,
+.btn-danger,
+.popup-submit.reject {
+  background: var(--ui-red) !important;
+  color: #ffffff !important;
+}
+
+.btn-cancel:hover:not(:disabled),
+.btn-delete:hover:not(:disabled),
+.btn-danger:hover:not(:disabled),
+.popup-submit.reject:hover:not(:disabled) {
+  background: var(--ui-red-hover) !important;
+}
+
+.btn-reject {
+  color: var(--ui-red) !important;
+  border-color: var(--ui-red) !important;
+}
+
+.btn-reject:hover:not(:disabled) {
+  color: #ffffff !important;
+  background: var(--ui-red-hover) !important;
+  border-color: var(--ui-red-hover) !important;
+}
+
+.btn-back,
+.btn-close,
+.btn-outline,
+.popup-cancel,
+.close-btn {
+  background: var(--ui-grey) !important;
+  color: #ffffff !important;
+  border-color: var(--ui-grey) !important;
+}
+
+.btn-back:hover:not(:disabled),
+.btn-close:hover:not(:disabled),
+.btn-outline:hover:not(:disabled),
+.popup-cancel:hover:not(:disabled),
+.close-btn:hover:not(:disabled) {
+  background: var(--ui-grey-hover) !important;
+  color: #ffffff !important;
+  border-color: var(--ui-grey-hover) !important;
+}
+
+button:disabled,
+.btn:disabled,
+.btn-save:disabled,
+.btn-register:disabled,
+.btn-continue:disabled,
+.btn-proceed:disabled,
+.btn-confirm:disabled,
+.popup-submit:disabled {
+  background: var(--ui-disabled) !important;
+  color: var(--ui-disabled-text) !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

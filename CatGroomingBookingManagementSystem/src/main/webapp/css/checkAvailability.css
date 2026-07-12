@@ -1,0 +1,677 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Nunito', sans-serif;
+	background: linear-gradient(
+	    160deg,
+	    #f5f3ff 0%,
+	    #fdf4ff 42%,
+	    #eff6ff 100%
+	);
+	min-height: 100vh;
+	padding: 2rem 1rem;
+}
+
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.page-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.header-icon {
+	width: 56px;
+	height: 56px;
+	background: linear-gradient(135deg, #8b5cf6, #ec4899);
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: white;
+}
+
+.header-icon .calendar-icon {
+	width: 30px;
+	height: 30px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2.3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.page-header h2 {
+	font-size: 1.6rem;
+	font-weight: 900;
+	color: #111827;
+}
+
+.page-header p {
+	color: #6b7280;
+	font-size: 0.9rem;
+	margin-top: 0.2rem;
+	font-weight: 600;
+}
+
+.two-col {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+}
+
+.card {
+	background: #fff;
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.cal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.cal-header h3 {
+	font-size: 1rem;
+	font-weight: 800;
+	color: #111827;
+}
+
+.month-nav {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.nav-btn {
+	width: 32px;
+	height: 32px;
+	border: none;
+	background: transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: 900;
+	color: #374151;
+}
+
+.nav-btn:hover {
+	background: #f3f4f6;
+}
+
+.month-label {
+	font-size: 0.88rem;
+	font-weight: 700;
+	color: #374151;
+	min-width: 130px;
+	text-align: center;
+}
+
+.cal-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 4px;
+}
+
+.day-name {
+	text-align: center;
+	font-size: 0.75rem;
+	font-weight: 700;
+	color: #6b7280;
+	padding: 0.4rem 0;
+}
+
+.day-cell {
+	aspect-ratio: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	font-size: 0.82rem;
+	font-weight: 700;
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	color: #111827;
+}
+
+.day-cell:hover:not(.past):not(.selected) {
+	background: #f3f4f6;
+}
+
+.day-cell.today {
+	background: #f3e8ff;
+	color: #7c3aed;
+}
+
+.day-cell.selected {
+	background: linear-gradient(135deg, #8b5cf6, #ec4899);
+	color: #fff;
+	box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+.day-cell.past {
+	color: #d1d5db;
+	cursor: not-allowed;
+}
+
+.day-cell.empty {
+	cursor: default;
+}
+
+.selected-banner {
+	display: none;
+	margin-top: 1rem;
+	padding: 0.75rem 1rem;
+	background: #f5f3ff;
+	border: 1px solid #ddd6fe;
+	border-radius: 10px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: #5b21b6;
+}
+
+.selected-banner.show {
+	display: block;
+}
+
+.time-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.time-header h3 {
+	font-size: 1rem;
+	font-weight: 800;
+	color: #111827;
+}
+
+.time-empty {
+	min-height: 285px;
+	text-align: center;
+	padding: 3rem 1rem;
+	color: #9ca3af;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.time-empty p {
+	font-size: 1.15rem;
+	font-weight: 800;
+	line-height: 1.4;
+}
+
+.slots-label {
+	font-size: 0.82rem;
+	color: #6b7280;
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+}
+
+.slots-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+}
+
+.slot-btn {
+	width: 100%;
+	min-height: 56px;
+	padding: 0.65rem 0.5rem;
+	border: 2px solid #e5e7eb;
+	border-radius: 10px;
+	background: #fff;
+	cursor: pointer;
+	font-family: 'Nunito', sans-serif;
+	font-size: 0.9rem;
+	font-weight: 800;
+	color: #111827;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 0.18rem;
+}
+
+.slot-btn:hover:not(.booked) {
+	border-color: #a78bfa;
+	background: #fafafa;
+}
+
+.slot-btn.selected-slot {
+	border-color: #7c3aed;
+	background: #f5f3ff;
+	color: #6d28d9;
+}
+
+.slot-btn.booked {
+	border-color: #e5e7eb;
+	background: #f9fafb;
+	color: #9ca3af;
+	cursor: not-allowed;
+}
+
+.slot-time {
+	display: block;
+	line-height: 1.15;
+	text-align: center;
+}
+
+.booked-label {
+	display: block;
+	font-size: 0.72rem;
+	color: #ef4444;
+	font-weight: 800;
+	line-height: 1.1;
+}
+
+.time-selected-banner {
+	display: none;
+	margin-top: 1rem;
+	padding: 0.75rem 1rem;
+	background: #f0fdf4;
+	border: 1px solid #86efac;
+	border-radius: 10px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: #15803d;
+}
+
+.time-selected-banner.show {
+	display: block;
+}
+
+.action-row {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+}
+
+.btn {
+	padding: 0.75rem 1.75rem;
+	border: none;
+	border-radius: 10px;
+	font-family: 'Nunito', sans-serif;
+	font-size: 0.95rem;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+.btn-cancel {
+	background: #ef4444;
+	color: #fff;
+}
+
+.btn-cancel:hover {
+	background: #dc2626;
+}
+
+.btn-continue {
+	background: #5cb85c;
+	color: #fff;
+	box-shadow: 0 2px 8px rgba(92, 184, 92, 0.3);
+}
+
+.btn-continue:hover:not(:disabled) {
+	background: #16a34a;
+}
+
+.btn-continue:disabled {
+	background: #d1d5db;
+	color: #9ca3af;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+@media ( max-width : 640px) {
+	.two-col {
+		grid-template-columns: 1fr;
+	}
+	.action-row {
+		flex-direction: column;
+	}
+	.btn {
+		width: 100%;
+	}
+}
+
+/* ===== FINAL COLOR STANDARD ===== */
+:root {
+  --ui-green: #5cb85c;
+  --ui-green-hover: #16a34a;
+  --ui-red: #ef4444;
+  --ui-red-hover: #dc2626;
+  --ui-grey: #b9bfc4;
+  --ui-grey-hover: #a8aeb3;
+  --ui-disabled: #d1d5db;
+  --ui-disabled-text: #6b7280;
+}
+
+.btn-save,
+.btn-register,
+.btn-continue,
+.btn-proceed,
+.btn-confirm,
+.popup-submit.confirm {
+  background: var(--ui-green) !important;
+  color: #ffffff !important;
+}
+
+.btn-save:hover:not(:disabled),
+.btn-register:hover:not(:disabled),
+.btn-continue:hover:not(:disabled),
+.btn-proceed:hover:not(:disabled),
+.btn-confirm:hover:not(:disabled),
+.popup-submit.confirm:hover:not(:disabled) {
+  background: var(--ui-green-hover) !important;
+}
+
+.btn-cancel,
+.btn-delete,
+.btn-danger,
+.popup-submit.reject {
+  background: var(--ui-red) !important;
+  color: #ffffff !important;
+}
+
+.btn-cancel:hover:not(:disabled),
+.btn-delete:hover:not(:disabled),
+.btn-danger:hover:not(:disabled),
+.popup-submit.reject:hover:not(:disabled) {
+  background: var(--ui-red-hover) !important;
+}
+
+.btn-reject {
+  color: var(--ui-red) !important;
+  border-color: var(--ui-red) !important;
+}
+
+.btn-reject:hover:not(:disabled) {
+  color: #ffffff !important;
+  background: var(--ui-red-hover) !important;
+  border-color: var(--ui-red-hover) !important;
+}
+
+.btn-back,
+.btn-close,
+.btn-outline,
+.popup-cancel,
+.close-btn {
+  background: var(--ui-grey) !important;
+  color: #ffffff !important;
+  border-color: var(--ui-grey) !important;
+}
+
+.btn-back:hover:not(:disabled),
+.btn-close:hover:not(:disabled),
+.btn-outline:hover:not(:disabled),
+.popup-cancel:hover:not(:disabled),
+.close-btn:hover:not(:disabled) {
+  background: var(--ui-grey-hover) !important;
+  color: #ffffff !important;
+  border-color: var(--ui-grey-hover) !important;
+}
+
+button:disabled,
+.btn:disabled,
+.btn-save:disabled,
+.btn-register:disabled,
+.btn-continue:disabled,
+.btn-proceed:disabled,
+.btn-confirm:disabled,
+.popup-submit:disabled {
+  background: var(--ui-disabled) !important;
+  color: var(--ui-disabled-text) !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Global font alignment: keep every page consistent with Nunito */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table,
+.modal,
+.system-toast {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== UNIVERSAL TYPOGRAPHY ALIGNMENT (MainCat standard) ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title,
+.main-title,
+.content-title,
+.content-header h1,
+.page-header h1,
+.page-heading h1,
+.header h1,
+.header-title,
+.success-title,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.hero h1,
+.hero-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.25px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header p,
+.page-header p,
+.page-heading p,
+.header p,
+.header-subtitle,
+.success-sub,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.hero p,
+.hero-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card h2,
+.header-card h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.15px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+/* ===== FINAL CONSISTENT TYPOGRAPHY 2026 ===== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+body {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.page-title,
+.content-title,
+.content-header > h1,
+.content-header h1:first-child,
+.page-header > h1,
+.page-header h1:first-child,
+.page-header h2:first-child,
+.page-heading > h1,
+.page-heading h1:first-child,
+.header-title,
+.hero-title,
+.hero h1,
+.welcome-card h1,
+.login-header h1,
+.register-header h1,
+.reset-header h1,
+.header-card > h1,
+.header-card > h2,
+.success-title {
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.2px !important;
+  color: #111827 !important;
+}
+
+.page-subtitle,
+.content-subtitle,
+.content-header > p,
+.content-header p:first-of-type,
+.page-header > p,
+.page-header p:first-of-type,
+.page-heading > p,
+.page-heading p:first-of-type,
+.header-subtitle,
+.hero-subtitle,
+.hero p,
+.welcome-card p,
+.login-header p,
+.register-header p,
+.reset-header p,
+.header-card > p,
+.success-sub {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.card-title,
+.section-title,
+.main-title,
+.addon-title,
+.search-card-head h2,
+.table-card-head h2,
+.panel-head h2,
+.panel h2,
+.card > h2,
+.form-header h2,
+.modal-header h2,
+.modal-header-purple h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.1px !important;
+}
+
+.apt-info h4,
+.apt-no,
+.appointment-no,
+.appointment-id,
+.inv-num,
+.invoice-number,
+.invoice-no,
+.invoice-id,
+.modal-inv-num,
+.id-text,
+.cat-name,
+.service-name {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+p,
+label,
+input,
+select,
+textarea,
+button,
+td,
+.info-value,
+.meta,
+.normal-text {
+  font-size: 1rem;
+  font-weight: 600;
+}

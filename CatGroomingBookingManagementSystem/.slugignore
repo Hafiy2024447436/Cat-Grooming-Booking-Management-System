@@ -1,0 +1,8 @@
+/.git/
+/.settings/
+/.classpath
+/.project
+/build/
+/database/postgresql_schema.sql
+/database/postgresql_sequence_sync.sql
+/POSTGRESQL_SETUP.md
