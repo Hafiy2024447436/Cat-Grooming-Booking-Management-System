@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <postgresql.version>42.7.13</postgresql.version>
-        <webapp.runner.version>10.1.56.0</webapp.runner.version>
+        <webapp.runner.version>10.1.46.0</webapp.runner.version>
     </properties>
 
     <dependencies>
