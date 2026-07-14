@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -473,7 +473,7 @@ td,
               <td>
                 <div class="actions">
                   <%-- View — all roles --%>
-                  <a href="/CatGroomingBookingManagementSystem/ViewOwnerController?id=${u.staffID}"
+                  <a href="${pageContext.request.contextPath}/ViewOwnerController?id=${u.staffID}"
                      class="act-btn view" title="View">
                     <svg viewBox="0 0 24 24" style="stroke:currentColor">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -565,7 +565,7 @@ td,
               <td>
                 <div class="actions">
                   <%-- View --%>
-                  <a href="/CatGroomingBookingManagementSystem/ViewCustomerController?id=${c.custID}"
+                  <a href="${pageContext.request.contextPath}/ViewCustomerController?id=${c.custID}"
                      class="act-btn view" title="View">
                     <svg viewBox="0 0 24 24" style="stroke:currentColor">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -573,7 +573,7 @@ td,
                     </svg>
                   </a>
                   <%-- Edit --%>
-                  <a href="/CatGroomingBookingManagementSystem/EditCustomerController?id=${c.custID}&source=owner"
+                  <a href="${pageContext.request.contextPath}/EditCustomerController?id=${c.custID}&source=owner"
                      class="act-btn edit" title="Edit">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -698,9 +698,9 @@ function confirmDelete() {
     // cek sama ada customer (prefix CUST) atau staff
     if (deletingId.toString().startsWith('CUST')) {
       const custId = deletingId.toString().replace('CUST', '');
-      window.location.href = '/CatGroomingBookingManagementSystem/DeleteCustomerController?id=' + custId;
+      window.location.href = '${pageContext.request.contextPath}/DeleteCustomerController?id=' + custId;
     } else {
-    	window.location.href = '/CatGroomingBookingManagementSystem/DeleteStaffController?id=' + deletingId + '&source=owner';
+    	window.location.href = '${pageContext.request.contextPath}/DeleteStaffController?id=' + deletingId + '&source=owner';
     }
   }
 }
