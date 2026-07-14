@@ -117,6 +117,41 @@
 
             pointer-events: none;
         }
+
+        /* Inline password validation */
+        .field-error {
+            display: none;
+            margin: 8px 8px 0;
+            color: #ef4444;
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .field-error.show {
+            display: block;
+        }
+
+        .form-input.input-error {
+            border-color: #ef4444 !important;
+            box-shadow:
+                0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+        }
+
+        .form-input.input-valid {
+            border-color: #22c55e !important;
+            box-shadow:
+                0 0 0 3px rgba(34, 197, 94, 0.10) !important;
+        }
+
+        /* Button always stays active */
+        .btn-reset-submit,
+        .btn-reset-submit:disabled {
+            opacity: 1 !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+        }
+
     </style>
 
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -151,9 +186,9 @@
 
             <% } %>
 
-            <form action="ResetPasswordController"
+            <form id="resetPasswordForm"
+                  action="${pageContext.request.contextPath}/ResetPasswordController"
                   method="post"
-                  data-disable-validation="true"
                   novalidate>
 
                 <!-- New Password -->
@@ -196,13 +231,18 @@
                         </button>
 
                     </div>
+
+                    <div id="newPasswordError"
+                         class="field-error"
+                         aria-live="polite">
+                    </div>
                 </div>
 
                 <!-- Confirm Password -->
                 <div class="form-group">
 
                     <label for="confirmPassword">
-                        Confirm Password
+                        Confirm New Password
                     </label>
 
                     <div class="input-wrapper password-wrapper">
@@ -238,9 +278,15 @@
                         </button>
 
                     </div>
+
+                    <div id="confirmPasswordError"
+                         class="field-error"
+                         aria-live="polite">
+                    </div>
                 </div>
 
                 <button type="submit"
+                        id="resetPasswordBtn"
                         class="btn-reset-submit">
 
                     <span>Reset Password</span>
@@ -340,7 +386,6 @@
     }
 </script>
 
-<script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
 
 </body>
 </html>
