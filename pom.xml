@@ -24,29 +24,31 @@
         <!-- Java version -->
         <maven.compiler.release>21</maven.compiler.release>
 
-        <!-- Encoding -->
-        <project.build.sourceEncoding>
-            UTF-8
-        </project.build.sourceEncoding>
-
-        <project.reporting.outputEncoding>
-            UTF-8
-        </project.reporting.outputEncoding>
+        <!-- File encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Dependency versions -->
         <postgresql.version>42.7.13</postgresql.version>
-        <tomcat.version>10.1.55</tomcat.version>
+
+        <!-- Local Eclipse Tomcat -->
+        <tomcat.local.version>10.1.46</tomcat.local.version>
+
+        <!-- Heroku Tomcat through Webapp Runner -->
         <webapp.runner.version>10.1.55.0</webapp.runner.version>
 
     </properties>
 
     <dependencies>
 
-        <!-- Tomcat JSP compiler -->
+        <!--
+            JSP compiler used during development.
+            Kept at 10.1.46 to match the Tomcat configured in Eclipse.
+        -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jasper</artifactId>
-            <version>${tomcat.version}</version>
+            <version>${tomcat.local.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -120,7 +122,7 @@
 
     <build>
 
-        <!-- Generated WAR name -->
+        <!-- Generated WAR filename -->
         <finalName>cat-grooming</finalName>
 
         <plugins>
@@ -132,15 +134,8 @@
                 <version>3.13.0</version>
 
                 <configuration>
-
-                    <release>
-                        ${maven.compiler.release}
-                    </release>
-
-                    <encoding>
-                        ${project.build.sourceEncoding}
-                    </encoding>
-
+                    <release>${maven.compiler.release}</release>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
@@ -166,7 +161,6 @@
                     <execution>
 
                         <id>copy-webapp-runner</id>
-
                         <phase>package</phase>
 
                         <goals>
@@ -179,13 +173,8 @@
 
                                 <artifactItem>
 
-                                    <groupId>
-                                        com.heroku
-                                    </groupId>
-
-                                    <artifactId>
-                                        webapp-runner
-                                    </artifactId>
+                                    <groupId>com.heroku</groupId>
+                                    <artifactId>webapp-runner</artifactId>
 
                                     <version>
                                         ${webapp.runner.version}
