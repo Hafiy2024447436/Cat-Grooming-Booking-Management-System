@@ -305,6 +305,22 @@ td,
   display: block;
 }
 
+  /* Keep the customer Register button active */
+  .register-card .btn-register,
+  .register-card .btn-register:disabled {
+    background: #5cb85c !important;
+    border-color: #5cb85c !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+  }
+
+  .register-card .btn-register:hover,
+  .register-card .btn-register:disabled:hover {
+    background: #16a34a !important;
+    border-color: #16a34a !important;
+  }
+
 </style>
 
 </head>
@@ -374,7 +390,7 @@ td,
     </section>
 
     <div class="register-card">
-      <form action="RegisterController" method="post" data-disable-validation="true" novalidate>
+      <form action="${pageContext.request.contextPath}/RegisterController" method="post">
         <div class="field">
           <label>Full Name</label>
           <div class="input-wrap">
@@ -513,6 +529,7 @@ td,
           </a>
 
           <button type="submit"
+                  id="registerBtn"
                   class="btn btn-register"
                   style="background:#5cb85c !important;border-color:#5cb85c !important;color:#ffffff !important;">
             Register
@@ -626,8 +643,6 @@ td,
 </footer>
 
 
-
-  <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
 
 <%@ include file="/notification.jsp" %>
 
