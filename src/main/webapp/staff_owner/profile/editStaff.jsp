@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,11 +146,6 @@ select:disabled {
 .input-wrap.has-error{
   border-color:#ef4444 !important;
   box-shadow:0 0 0 3px rgba(239,68,68,.12) !important;
-}
-.save-btn:disabled{
-  background:#d1d5db !important;
-  border-color:#d1d5db !important;
-  cursor:not-allowed !important;
 }
 .password-readonly-note{
   background:#f8fafc;
@@ -407,6 +402,32 @@ td,
   display: block;
 }
 
+
+/* Keep Save active; invalid forms are blocked by JavaScript on submit */
+.save-btn,
+.save-btn:disabled {
+  background: var(--btn-green) !important;
+  border-color: var(--btn-green) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* Validation messages must appear below the input box */
+.field-group > .field-error {
+  display: none;
+  margin: 7px 4px 0;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.field-group > .field-error.is-visible {
+  display: block;
+}
+
 </style>
 </head>
 <body>
@@ -437,7 +458,7 @@ td,
             </c:if>
 
             <form id="editStaffForm" class="edit-form" method="POST" enctype="multipart/form-data"
-                  action="${pageContext.request.contextPath}/EditStaffController" data-disable-validation="true" novalidate>
+                  action="${pageContext.request.contextPath}/EditStaffController" novalidate>
 
               <%-- hantar ID sebagai int terus, no more STF prefix --%>
               <input type="hidden" name="staffId" value="${staff.staffID}">
@@ -560,8 +581,8 @@ td,
                         <line x1="1" y1="1" x2="23" y2="23"/>
                       </svg>
               </button>
-                      <p id="passwordError" class="field-error">Password must contain at least 8 characters.</p>
                     </div>
+                    <p id="passwordError" class="field-error">Password must contain at least 8 characters.</p>
                   </div>
 
                   <div class="field-group">
@@ -584,8 +605,8 @@ td,
                         <line x1="1" y1="1" x2="23" y2="23"/>
                       </svg>
               </button>
-                      <p id="confirmPasswordError" class="field-error">Password and confirm password do not match.</p>
                     </div>
+                    <p id="confirmPasswordError" class="field-error">Password and confirm password do not match.</p>
                   </div>
                 </div>
               </c:if>
@@ -684,7 +705,6 @@ function setupProfileValidation(formId) {
     const valid = fullNameValue.length > 0 && phoneValue.length > 0 && emailValue.length > 0
       && !fullNameInvalid && !phoneInvalid && !emailInvalid && !passwordInvalid && !passwordMismatch;
 
-    if (saveBtn) saveBtn.disabled = !valid;
     return valid;
   }
 
@@ -732,8 +752,6 @@ if (profilePhotoInput) {
 }
 </script>
 
-
-  <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
 
 <%@ include file="/notification.jsp" %>
 </body>
