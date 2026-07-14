@@ -60,6 +60,15 @@
     .password-eye-btn.is-visible .eye-closed {
       display: block;
     }
+
+    /* Save button is always active; validation still blocks invalid submit */
+    .btn-save,
+    .btn-save:disabled {
+      opacity: 1 !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+    }
+
   </style>
 </head>
 <body>
@@ -276,7 +285,7 @@
 
         <div class="action-buttons">
           <button id="cancel-btn" class="btn-cancel" type="button">Cancel</button>
-          <button id="save-btn" class="btn-save" type="submit" disabled>Save</button>
+          <button id="save-btn" class="btn-save" type="submit">Save</button>
         </div>
       </form>
     </div>
@@ -410,7 +419,6 @@
       setFieldState(inputConfirmPassword, confirmPasswordError, !isMismatch);
 
       const valid = fieldsValid && !isTooShort && !isMismatch;
-      saveBtn.disabled = !valid;
       return valid;
     }
 
@@ -531,8 +539,6 @@
   })();
 </script>
 
-
-  <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
 
 <%@ include file="/notification.jsp" %>
 </body>
