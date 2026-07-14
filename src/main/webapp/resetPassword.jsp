@@ -387,5 +387,163 @@
 </script>
 
 
+<script>
+    const resetPasswordForm =
+        document.getElementById("resetPasswordForm");
+
+    const newPasswordInput =
+        document.getElementById("newPassword");
+
+    const confirmPasswordInput =
+        document.getElementById("confirmPassword");
+
+    const newPasswordError =
+        document.getElementById("newPasswordError");
+
+    const confirmPasswordError =
+        document.getElementById("confirmPasswordError");
+
+    function showError(input, errorElement, message) {
+        input.classList.add("input-error");
+        input.classList.remove("input-valid");
+
+        errorElement.textContent = message;
+        errorElement.classList.add("show");
+    }
+
+    function clearError(input, errorElement) {
+        input.classList.remove("input-error");
+        input.classList.add("input-valid");
+
+        errorElement.textContent = "";
+        errorElement.classList.remove("show");
+    }
+
+    function clearEmptyState(input, errorElement) {
+        input.classList.remove("input-error");
+        input.classList.remove("input-valid");
+
+        errorElement.textContent = "";
+        errorElement.classList.remove("show");
+    }
+
+    function validateNewPassword(showEmptyError) {
+        const password = newPasswordInput.value;
+
+        if (password.length === 0) {
+            if (showEmptyError) {
+                showError(
+                    newPasswordInput,
+                    newPasswordError,
+                    "Please enter a new password."
+                );
+            } else {
+                clearEmptyState(
+                    newPasswordInput,
+                    newPasswordError
+                );
+            }
+
+            return false;
+        }
+
+        if (password.length < 8) {
+            showError(
+                newPasswordInput,
+                newPasswordError,
+                "Password must be at least 8 characters."
+            );
+
+            return false;
+        }
+
+        clearError(
+            newPasswordInput,
+            newPasswordError
+        );
+
+        return true;
+    }
+
+    function validateConfirmPassword(showEmptyError) {
+        const password = newPasswordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        /*
+         * Show mismatch as soon as a new password has been entered,
+         * even when the confirmation field is still empty.
+         */
+        if (confirmPassword.length === 0) {
+            if (password.length > 0 || showEmptyError) {
+                showError(
+                    confirmPasswordInput,
+                    confirmPasswordError,
+                    "Passwords do not match."
+                );
+            } else {
+                clearEmptyState(
+                    confirmPasswordInput,
+                    confirmPasswordError
+                );
+            }
+
+            return false;
+        }
+
+        if (confirmPassword !== password) {
+            showError(
+                confirmPasswordInput,
+                confirmPasswordError,
+                "Passwords do not match."
+            );
+
+            return false;
+        }
+
+        clearError(
+            confirmPasswordInput,
+            confirmPasswordError
+        );
+
+        return true;
+    }
+
+    newPasswordInput.addEventListener("input", function () {
+        validateNewPassword(false);
+        validateConfirmPassword(false);
+    });
+
+    confirmPasswordInput.addEventListener("input", function () {
+        validateConfirmPassword(false);
+    });
+
+    newPasswordInput.addEventListener("blur", function () {
+        validateNewPassword(true);
+        validateConfirmPassword(false);
+    });
+
+    confirmPasswordInput.addEventListener("blur", function () {
+        validateConfirmPassword(true);
+    });
+
+    resetPasswordForm.addEventListener("submit", function (event) {
+        const passwordValid =
+            validateNewPassword(true);
+
+        const confirmPasswordValid =
+            validateConfirmPassword(true);
+
+        if (!passwordValid || !confirmPasswordValid) {
+            event.preventDefault();
+
+            if (!passwordValid) {
+                newPasswordInput.focus();
+            } else {
+                confirmPasswordInput.focus();
+            }
+        }
+    });
+</script>
+
 </body>
 </html>
