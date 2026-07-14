@@ -240,11 +240,6 @@ input.input-error, textarea.input-error{
   border-color:#ef4444 !important;
   box-shadow:0 0 0 3px rgba(239,68,68,.12) !important;
 }
-.btn-submit:disabled{
-  background:#d1d5db !important;
-  border-color:#d1d5db !important;
-  cursor:not-allowed !important;
-}
 .generated-password-box{
   background:#f0fdf4;
   border:1px solid #bbf7d0;
@@ -532,7 +527,7 @@ td,
 
       <div class="btn-row">
         <button type="reset" class="btn btn-cancel">Clear</button>
-        <button type="submit" id="registerBtn" class="btn btn-submit" disabled>Register Staff</button>
+        <button type="submit" id="registerBtn" class="btn btn-submit">Register Staff</button>
       </div>
     </form>
 
@@ -547,7 +542,6 @@ td,
 
   const username = document.getElementById('staffUsername');
   const email = document.getElementById('staffEmail');
-  const registerBtn = document.getElementById('registerBtn');
 
   function setError(input, errorId, isInvalid) {
     const error = document.getElementById(errorId);
@@ -566,8 +560,6 @@ td,
     setError(email, 'emailError', emailInvalid && emailValue.length > 0);
 
     const valid = usernameValue.length > 0 && emailValue.length > 0 && !usernameInvalid && !emailInvalid;
-    registerBtn.disabled = !valid;
-
     return valid;
   }
 
